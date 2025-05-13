@@ -1,0 +1,117 @@
+# REST Client
+
+@baseUrl    = http://localhost:5000
+@adminToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MjJiMzAzODUxZDk2ZDY2YmFjN2MyZSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc0NzEwNTQ1NCwiZXhwIjoxNzQ3MTkxODU0fQ.esejQKFe12iTS_jt9VK05SyEZ9UL4MiQGY882bUoLg0
+@userToken  = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MjJjN2JhZTRjOTBjNjcxNmE5NGE3MyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzQ3MTEwNTA5LCJleHAiOjE3NDcxOTY5MDl9.ApdA80k9rHZaEScQk21Ptqbcfrcyv0GA_5oU-QRzmjA
+@eventId    = 6822c7e8e4c90c6716a94a7c
+@bookingId  = 6822c086bf524f7cead14979
+@qrCode     = data:image/png;base64,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
+
+################################################################################
+# 7) POST Endpoints
+################################################################################
+
+### 7.1 Register a new user
+POST {{baseUrl}}/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "Tharo",
+  "email": "seththaro@gmail.com",
+  "password": "Secret123!"
+}
+
+### 7.2 Login (get JWT)
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "s_hour2@mail.fhsu.com",
+  "password": "Secret123!"
+}
+
+### 7.3 Create a new event (admin only)
+POST {{baseUrl}}/api/events
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{
+  "title": "Test Event 3",
+  "description": "This is a test 3",
+  "category": "Testing",
+  "venue": "In-Person",
+  "date": "2025-010-01",
+  "time": "15:00",
+  "seatCapacity": 30,
+  "price": 1000
+}
+
+### 7.4 Book tickets for an event (user only)
+POST {{baseUrl}}/api/bookings
+Authorization: Bearer {{userToken}}
+Content-Type: application/json
+
+{
+  "event": "{{eventId}}",
+  "quantity": 2
+}
+
+################################################################################
+# 6) GET Endpoints
+################################################################################
+
+### 6.1 Return all events
+GET {{baseUrl}}/api/events
+
+### 6.2 Return a single event’s details
+GET {{baseUrl}}/api/events/{{eventId}}
+
+### 6.3 Filter events by category
+GET {{baseUrl}}/api/events?category=Testing
+
+### 6.4 Filter events by category
+GET {{baseUrl}}/api/events?venue=Virtual
+
+### 6.5 Filter events by date
+GET {{baseUrl}}/api/events?date=2025-08-01
+
+### 6.6 Return all bookings for logged-in user
+GET {{baseUrl}}/api/bookings
+Authorization: Bearer {{userToken}}
+
+### 6.7 Return a specific booking’s detail
+GET {{baseUrl}}/api/bookings/{{bookingId}}
+Authorization: Bearer {{userToken}}
+
+################################################################################
+# 8) PUT Endpoints
+################################################################################
+
+### 8.1 Update an event (admin only)
+PUT {{baseUrl}}/api/events/{{eventId}}
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{
+  "price": 25,
+  "seatCapacity": 120
+}
+
+################################################################################
+# 9) DELETE Endpoints
+################################################################################
+
+### 9.1 Delete an event (admin only)
+DELETE {{baseUrl}}/api/events/{{eventId}}
+Authorization: Bearer {{adminToken}}
+
+################################################################################
+# 404 Handler Tests
+################################################################################
+
+### 404 HTML
+GET {{baseUrl}}/no-such-route
+
+### 404 JSON
+GET {{baseUrl}}/no-such-route
+Accept: application/json
